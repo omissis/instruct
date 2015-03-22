@@ -1,0 +1,22 @@
+{
+    "name": "friendsofdrupal/instruct",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "omissis",
+            "email": "claudi0.beatric3@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "FOD\\Instruct\\": "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "FOD\\Instruct\\Tests\\": "tests/" }
+    },
+    "require": {
+        "symfony/validator": "~2.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    }
+}
