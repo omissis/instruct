@@ -17,6 +17,9 @@
     <testsuite name="DataProcessor">
         <directory>Tests/DataProcessor</directory>
     </testsuite>
+    <testsuite name="All">
+        <directory>Tests/*</directory>
+    </testsuite>
   </testsuites>
 
    <logging>
