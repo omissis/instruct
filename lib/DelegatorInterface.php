@@ -1,19 +1,15 @@
 <?php
 
-/**
- * @file
- * Contains \FOD\Instruct\RulesExpressionTrait.
- */
-
 namespace FOD\Instruct;
 
-interface DelegatorInterface {
-  /**
-   * Return a new instance of an object's delegate.
-   *
-   * @param array $configuration
-   *
-   * @return mixed
-   */
-  public function createDelegateInstance(array $configuration = array());
+interface DelegatorInterface
+{
+    /**
+     * Return a new instance of an object's delegate.
+     *
+     * @param array $configuration
+     *
+     * @return mixed
+     */
+    public function createDelegateInstance(array $configuration = array());
 }
