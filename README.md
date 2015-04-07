@@ -3,6 +3,11 @@ Instruct
 
 A PHP Event-Condition-Action system implementation.
 
+[![Build Status](https://travis-ci.org/omissis/instruct.svg?branch=master)](https://travis-ci.org/omissis/instruct)
+[![Coverage Status](https://coveralls.io/repos/omissis/instruct/badge.svg)](https://coveralls.io/r/omissis/instruct)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/omissis/instruct/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/omissis/instruct/?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/552461d5971f784339000624/badge.svg?style=flat)](https://www.versioneye.com/user/projects/552461d5971f784339000624)
+
 Introduction
 ------------
 
