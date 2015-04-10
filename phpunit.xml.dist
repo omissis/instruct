@@ -12,13 +12,13 @@
 
   <testsuites>
     <testsuite name="DataMatchers">
-        <directory>Tests/DataMatcher</directory>
+        <directory>tests/DataMatcher</directory>
     </testsuite>
     <testsuite name="DataProcessor">
-        <directory>Tests/DataProcessor</directory>
+        <directory>tests/DataProcessor</directory>
     </testsuite>
     <testsuite name="All">
-        <directory>Tests/*</directory>
+        <directory>tests/*</directory>
     </testsuite>
   </testsuites>
 
