@@ -18,7 +18,7 @@
         <directory>tests/DataProcessor</directory>
     </testsuite>
     <testsuite name="All">
-        <directory>tests/*</directory>
+        <directory>tests</directory>
     </testsuite>
   </testsuites>
 
