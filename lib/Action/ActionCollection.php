@@ -4,8 +4,8 @@ namespace FOD\Instruct\Action;
 
 use FOD\Instruct\Context\ContextInterface;
 
-use ArrayObject,
-    InvalidArgumentException;
+use ArrayObject;
+use InvalidArgumentException;
 
 class ActionCollection extends ArrayObject implements ActionInterface
 {
