@@ -1,28 +1,28 @@
 <phpunit
-  backupGlobals               = "false"
-  backupStaticAttributes      = "false"
-  colors                      = "true"
-  convertErrorsToExceptions   = "true"
-  convertNoticesToExceptions  = "true"
-  convertWarningsToExceptions = "true"
-  processIsolation            = "false"
-  stopOnFailure               = "false"
-  syntaxCheck                 = "true"
-  bootstrap                   = "vendor/autoload.php">
+    backupGlobals               = "false"
+    backupStaticAttributes      = "false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "true"
+    convertWarningsToExceptions = "true"
+    processIsolation            = "false"
+    stopOnFailure               = "false"
+    syntaxCheck                 = "true"
+    bootstrap                   = "vendor/autoload.php">
 
-  <testsuites>
-    <testsuite name="DataMatchers">
-        <directory>tests/DataMatcher</directory>
-    </testsuite>
-    <testsuite name="DataProcessor">
-        <directory>tests/DataProcessor</directory>
-    </testsuite>
-    <testsuite name="All">
-        <directory>tests</directory>
-    </testsuite>
-  </testsuites>
+    <testsuites>
+        <testsuite name="Instruct Test Suite">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
 
-   <logging>
-    <log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false" />
-  </logging>
+    <filter>
+        <whitelist>
+            <directory>./lib/</directory>
+            <exclude>
+                <directory>./tests</directory>
+                <directory>./vendor</directory>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>
