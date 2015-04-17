@@ -12,4 +12,11 @@ interface ActionInterface
      * @param ContextInterface $context
      */
     public function execute(ContextInterface $context);
+
+    /**
+     * @param ActionInterface $event
+     *
+     * @return boolean
+     */
+    public function isEqualTo(ActionInterface $action);
 }

@@ -39,4 +39,29 @@ class ActionCollection extends ArrayObject implements ActionInterface
 
         return false;
     }
+
+    public function isEqualTo(ActionInterface $action)
+    {
+        if (count($this) !== count($action)) {
+            return false;
+        }
+
+        $matches = [];
+
+        foreach ($this as $i => $innerAction) {
+            foreach ($action as $j => $outerAction) {
+                // Don't match the same action twice
+                if (in_array($j, $matches, true)) {
+                    continue;
+                }
+
+                if ($innerAction->isEqualTo($outerAction)) {
+                    $matches[$i] = $j;
+                    break;
+                }
+            }
+        }
+
+        return count($matches) === count($this);
+    }
 }
