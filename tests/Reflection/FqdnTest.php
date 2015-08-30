@@ -28,7 +28,7 @@ class FqdnTest extends TestCase
         new Fqdn([]);
     }
 
-    public function testCanConverToString()
+    public function testCanBeConvertedToString()
     {
         $fqdn = new Fqdn(self::TEST_FQDN);
 

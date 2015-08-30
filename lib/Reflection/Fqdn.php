@@ -23,16 +23,27 @@ final class Fqdn
         $this->fqdn = $fqdn;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->fqdn;
     }
 
+    /**
+     * @return Fqdn
+     */
     public function trim()
     {
         return new $this(ltrim((string) $this, '\\'));
     }
 
+    /**
+     * @param  Fqdn $fqdn
+     *
+     * @return bool
+     */
     public function isEqualTo(Fqdn $fqdn)
     {
         return (string) $this->trim() === (string) $fqdn->trim();
