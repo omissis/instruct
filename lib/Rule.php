@@ -2,7 +2,7 @@
 
 namespace FOD\Instruct;
 
-use FOD\Instruct\Event\EventCollection;
+use FOD\Instruct\Event\EventNameCollection;
 use FOD\Instruct\Event\EventInterface;
 use FOD\Instruct\Condition\ConditionInterface;
 use FOD\Instruct\Action\ActionInterface;
@@ -11,9 +11,9 @@ use FOD\Instruct\Context\ContextBuilderInterface;
 final class Rule
 {
     /**
-     * @var EventCollection
+     * @var EventNameCollection
      */
-    private $events;
+    private $eventNames;
 
     /**
      * @var ConditionInterface
@@ -31,8 +31,8 @@ final class Rule
     private $contextBuilder;
 
     /**
-     * @param EventCollection         $events
-     *   A list of events that this rule applies to.
+     * @param EventNameCollection     $eventNames
+     *   A list of event names that this rule applies on.
      * @param ConditionInterface      $conditions
      *   A Composite condition that determines if this rule should execute or not.
      * @param ActionInterface         $actions
@@ -41,12 +41,12 @@ final class Rule
      *   A Context builder object.
      */
     public function __construct(
-        EventCollection $events,
+        EventNameCollection $eventNames,
         ConditionInterface $conditions,
         ActionInterface $actions,
         ContextBuilderInterface $contextBuilder
     ) {
-        $this->events = $events;
+        $this->eventNames = $eventNames;
         $this->conditions = $conditions;
         $this->actions = $actions;
         $this->contextBuilder = $contextBuilder;
@@ -59,7 +59,7 @@ final class Rule
      */
     public function apply(EventInterface $event)
     {
-        $eventWasFound = $this->events->contain($event);
+        $eventWasFound = $this->eventNames->contain($event->getName());
 
         if (!$eventWasFound) {
             return;

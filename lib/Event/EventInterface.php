@@ -5,6 +5,11 @@ namespace FOD\Instruct\Event;
 interface EventInterface
 {
     /**
+     * @return Event\Name
+     */
+    public function getName();
+
+    /**
      * @return ArrayObject
      */
     public function getData();
@@ -12,7 +17,7 @@ interface EventInterface
     /**
      * @param EventInterface $event
      *
-     * @return boolean
+     * @return bool
      */
     public function isEqualTo(EventInterface $event);
 }
