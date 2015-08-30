@@ -2,12 +2,12 @@
 
 namespace FOD\Instruct\DataMatcher\Argument;
 
-use Symfony\Component\Validator\Constraint,
-    Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Validation;
 
-use InvalidArgumentException,
-    ArrayAccess,
-    Traversable;
+use InvalidArgumentException;
+use ArrayAccess;
+use Traversable;
 
 final class DataMatcherArgument
 {

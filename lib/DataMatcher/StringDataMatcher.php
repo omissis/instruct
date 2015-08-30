@@ -2,8 +2,8 @@
 
 namespace FOD\Instruct\DataMatcher;
 
-use FOD\Instruct\DataProcessor\LowercaseDataProcessor,
-    FOD\Instruct\DataProcessor\TrimDataProcessor;
+use FOD\Instruct\DataProcessor\LowercaseDataProcessor;
+use FOD\Instruct\DataProcessor\TrimDataProcessor;
 
 use InvalidArgumentException;
 
