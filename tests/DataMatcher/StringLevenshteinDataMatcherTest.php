@@ -1,66 +1,62 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\rules\Unit\DataMatcher\LevenshteinDataMatcherTest.
- */
-
 namespace Drupal\Tests\rules\Unit\DataMatcher;
 
 use FOD\Instruct\DataMatcher\StringLevenshteinDataMatcher;
-use PHPUnit_Framework_TestCase;
 
-/**
- * @coversDefaultClass \FOD\Instruct\DataMatcher\StringLevenshteinDataMatcher
- * @group rules
- */
-class StringLevenshteinDataMatcherTest extends PHPUnit_Framework_TestCase {
+use PHPUnit_Framework_TestCase as TestCase;
 
-  /**
-   * @dataProvider caseSensitiveMatchesProvider
-   */
-  public function testCaseSensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = StringLevenshteinDataMatcher::create();
+class StringLevenshteinDataMatcherTest extends TestCase
+{
+    /**
+     * @dataProvider caseSensitiveMatchesProvider
+     */
+    public function testCaseSensitiveMatch($expectedMatchResult, $threshold, $subject, $object)
+    {
+        $matcher = StringLevenshteinDataMatcher::create();
 
-    $matcher->setThreshold($threshold);
-    $matcher->setCaseSensitive();
+        $matcher->setThreshold($threshold);
+        $matcher->setCaseSensitive();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  /**
-   * @dataProvider caseInsensitiveMatchesProvider
-   */
-  public function testCaseInsensitiveMatch($expectedMatchResult, $threshold, $subject, $object) {
-    $matcher = StringLevenshteinDataMatcher::create();
+    /**
+     * @dataProvider caseInsensitiveMatchesProvider
+     */
+    public function testCaseInsensitiveMatch($expectedMatchResult, $threshold, $subject, $object)
+    {
+        $matcher = StringLevenshteinDataMatcher::create();
 
-    $matcher->setThreshold($threshold);
-    $matcher->setCaseInsensitive();
+        $matcher->setThreshold($threshold);
+        $matcher->setCaseInsensitive();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  public function caseSensitiveMatchesProvider() {
-    return array(
-      array(TRUE, 1, 'foo', 'foo'),
-      array(TRUE, 1, 'bar', 'baz'),
-      array(FALSE, 1, 'foo', 'bar'),
+    public function caseSensitiveMatchesProvider()
+    {
+        return [
+            [true, 1, 'foo', 'foo'],
+            [true, 1, 'bar', 'baz'],
+            [false, 1, 'foo', 'bar'],
 
-      array(TRUE, 3, 'foo', 'foo'),
-      array(TRUE, 3, 'bar', 'baz'),
-      array(TRUE, 3, 'foo', 'bar'),
-    );
-  }
+            [true, 3, 'foo', 'foo'],
+            [true, 3, 'bar', 'baz'],
+            [true, 3, 'foo', 'bar'],
+        ];
+    }
 
-  public function caseInsensitiveMatchesProvider() {
-    return array(
-      array(TRUE, 1, 'foo', 'FOO'),
-      array(TRUE, 1, 'bar', 'BAZ'),
-      array(FALSE, 1, 'foo', 'BAR'),
+    public function caseInsensitiveMatchesProvider()
+    {
+        return [
+            [true, 1, 'foo', 'FOO'],
+            [true, 1, 'bar', 'BAZ'],
+            [false, 1, 'foo', 'BAR'],
 
-      array(TRUE, 3, 'foo', 'FOO'),
-      array(TRUE, 3, 'bar', 'BAZ'),
-      array(TRUE, 3, 'foo', 'BAR'),
-    );
-  }
+            [true, 3, 'foo', 'FOO'],
+            [true, 3, 'bar', 'BAZ'],
+            [true, 3, 'foo', 'BAR'],
+        ];
+    }
 }

@@ -1,119 +1,118 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\rules\Unit\DataMatcher\StringEqualsDataMatcherTest.
- */
-
 namespace Drupal\Tests\rules\Unit\DataMatcher;
 
 use FOD\Instruct\DataMatcher\StringEqualsDataMatcher;
-use PHPUnit_Framework_TestCase;
 
-/**
- * @coversDefaultClass \FOD\Instruct\DataMatcher\StringEqualsDataMatcher
- * @group rules
- */
-class StringEqualsDataMatcherTest extends PHPUnit_Framework_TestCase {
+use PHPUnit_Framework_TestCase as TestCase;
 
-  /**
-   * @dataProvider caseSensitiveTrimmedMatchesProvider
-   */
-  public function testCaseSensitiveTrimmedMatch($expectedMatchResult, $subject, $object) {
-    $matcher = StringEqualsDataMatcher::create();
+class StringEqualsDataMatcherTest extends TestCase
+{
+    /**
+     * @dataProvider caseSensitiveTrimmedMatchesProvider
+     */
+    public function testCaseSensitiveTrimmedMatch($expectedMatchResult, $subject, $object)
+    {
+        $matcher = StringEqualsDataMatcher::create();
 
-    $matcher->setCaseSensitive();
+        $matcher->setCaseSensitive();
 
-    $matcher->setTrimmed();
+        $matcher->setTrimmed();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  /**
-   * @dataProvider caseInsensitiveTrimmedMatchesProvider
-   */
-  public function testCaseInsensitiveTrimmedMatch($expectedMatchResult, $subject, $object) {
-    $matcher = StringEqualsDataMatcher::create();
+    /**
+     * @dataProvider caseInsensitiveTrimmedMatchesProvider
+     */
+    public function testCaseInsensitiveTrimmedMatch($expectedMatchResult, $subject, $object)
+    {
+        $matcher = StringEqualsDataMatcher::create();
 
-    $matcher->setCaseInsensitive();
+        $matcher->setCaseInsensitive();
 
-    $matcher->setTrimmed();
+        $matcher->setTrimmed();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  /**
-   * @dataProvider caseSensitiveUntrimmedMatchesProvider
-   */
-  public function testCaseSensitiveUntrimmedMatch($expectedMatchResult, $subject, $object) {
-    $matcher = StringEqualsDataMatcher::create();
+    /**
+     * @dataProvider caseSensitiveUntrimmedMatchesProvider
+     */
+    public function testCaseSensitiveUntrimmedMatch($expectedMatchResult, $subject, $object)
+    {
+        $matcher = StringEqualsDataMatcher::create();
 
-    $matcher->setCaseSensitive();
+        $matcher->setCaseSensitive();
 
-    $matcher->unsetTrimmed();
+        $matcher->unsetTrimmed();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  /**
-   * @dataProvider caseInsensitiveUntrimmedMatchesProvider
-   */
-  public function testCaseInsensitiveUntrimmedMatch($expectedMatchResult, $subject, $object) {
-    $matcher = StringEqualsDataMatcher::create();
+    /**
+     * @dataProvider caseInsensitiveUntrimmedMatchesProvider
+     */
+    public function testCaseInsensitiveUntrimmedMatch($expectedMatchResult, $subject, $object)
+    {
+        $matcher = StringEqualsDataMatcher::create();
 
-    $matcher->setCaseInsensitive();
+        $matcher->setCaseInsensitive();
 
-    $matcher->unsetTrimmed();
+        $matcher->unsetTrimmed();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  public function caseSensitiveTrimmedMatchesProvider() {
-    return array(
-      array(TRUE,  'foo ', ' foo'),
-      array(TRUE,  'foo',  'foo'),
-      array(FALSE, 'foo ', ' FOO'),
-      array(FALSE, 'foo ', ' fo'),
-      array(FALSE, 'foo',  'FOO'),
-      array(FALSE, 'foo ', ' FO'),
-      array(FALSE, 'foo',  'fo'),
-    );
-  }
+    public function caseSensitiveTrimmedMatchesProvider()
+    {
+        return [
+            [true,  'foo ', ' foo'],
+            [true,  'foo',  'foo'],
+            [false, 'foo ', ' FOO'],
+            [false, 'foo ', ' fo'],
+            [false, 'foo',  'FOO'],
+            [false, 'foo ', ' FO'],
+            [false, 'foo',  'fo'],
+        ];
+    }
 
-  public function caseInsensitiveTrimmedMatchesProvider() {
-    return array(
-      array(TRUE,  'foo ', ' foo'),
-      array(TRUE,  'foo',  'foo'),
-      array(TRUE,  'foo ', ' FOO'),
-      array(FALSE, 'foo ', ' fo'),
-      array(TRUE,  'foo',  'FOO'),
-      array(FALSE, 'foo ', ' FO'),
-      array(FALSE, 'foo',  'fo'),
-    );
-  }
+    public function caseInsensitiveTrimmedMatchesProvider()
+    {
+        return [
+            [true,  'foo ', ' foo'],
+            [true,  'foo',  'foo'],
+            [true,  'foo ', ' FOO'],
+            [false, 'foo ', ' fo'],
+            [true,  'foo',  'FOO'],
+            [false, 'foo ', ' FO'],
+            [false, 'foo',  'fo'],
+        ];
+    }
 
-  public function caseSensitiveUntrimmedMatchesProvider() {
-    return array(
-      array(FALSE, 'foo ', ' foo'),
-      array(TRUE,  'foo',  'foo'),
-      array(FALSE, 'foo ', ' FOO'),
-      array(FALSE, 'foo ', ' fo'),
-      array(FALSE, 'foo',  'FOO'),
-      array(FALSE, 'foo ', ' FO'),
-      array(FALSE, 'foo',  'fo'),
-    );
-  }
+    public function caseSensitiveUntrimmedMatchesProvider()
+    {
+        return [
+            [false, 'foo ', ' foo'],
+            [true,  'foo',  'foo'],
+            [false, 'foo ', ' FOO'],
+            [false, 'foo ', ' fo'],
+            [false, 'foo',  'FOO'],
+            [false, 'foo ', ' FO'],
+            [false, 'foo',  'fo'],
+        ];
+    }
 
-  public function caseInsensitiveUntrimmedMatchesProvider() {
-    return array(
-      array(FALSE, 'foo ', ' foo'),
-      array(TRUE,  'foo',  'foo'),
-      array(FALSE, 'foo ', ' FOO'),
-      array(FALSE, 'foo ', ' fo'),
-      array(TRUE,  'foo',  'FOO'),
-      array(FALSE, 'foo ', ' FO'),
-      array(FALSE, 'foo',  'fo'),
-    );
-  }
-
+    public function caseInsensitiveUntrimmedMatchesProvider()
+    {
+        return [
+            [false, 'foo ', ' foo'],
+            [true,  'foo',  'foo'],
+            [false, 'foo ', ' FOO'],
+            [false, 'foo ', ' fo'],
+            [true,  'foo',  'FOO'],
+            [false, 'foo ', ' FO'],
+            [false, 'foo',  'fo'],
+        ];
+    }
 }

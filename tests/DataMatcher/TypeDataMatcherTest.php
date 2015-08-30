@@ -1,68 +1,64 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\rules\Unit\DataMatcher\TypeDataMatcherTest.
- */
-
 namespace Drupal\Tests\rules\Unit\DataMatcher;
 
 use FOD\Instruct\DataMatcher\TypeDataMatcher;
-use PHPUnit_Framework_TestCase;
 
-/**
- * @coversDefaultClass \FOD\Instruct\DataMatcher\TypeDataMatcher
- * @group rules
- */
-class StringTypeDataMatcherTest extends PHPUnit_Framework_TestCase {
+use PHPUnit_Framework_TestCase as TestCase;
 
-  /**
-   * The condition to be tested.
-   *
-   * @var \FOD\Instruct\DataMatcher\DataMatcherInterface
-   */
-  protected $matcher;
+class StringTypeDataMatcherTest extends TestCase
+{
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setUp() {
-    parent::setUp();
-    $this->matcher = TypeDataMatcher::create();
-  }
+    /**
+     * The condition to be tested.
+     *
+     * @var \FOD\Instruct\DataMatcher\DataMatcherInterface
+     */
+    protected $matcher;
 
-  /**
-   * @dataProvider matchesProvider
-   */
-  public function testMatch($expectedMatchResult, $subject, $object) {
-    $this->assertSame($expectedMatchResult, $this->matcher->match($subject, $object));
-  }
+    /**
+     * {@inheritdoc}
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $this->matcher = TypeDataMatcher::create();
+    }
 
-  public function matchesProvider() {
-    return array(
-      // integer subject
-      array(TRUE, 1, 'integer'),
-      array(FALSE, 1, 'string'),
+    /**
+     * @dataProvider matchesProvider
+     */
+    public function testMatch($expectedMatchResult, $subject, $object)
+    {
+        $this->assertSame($expectedMatchResult, $this->matcher->match($subject, $object));
+    }
 
-      // string subject
-      array(TRUE, '1', 'string'),
-      array(FALSE, '1', 'integer'),
+    public function matchesProvider()
+    {
+        return [
+          // integer subject
+          [true, 1, 'integer'],
+          [false, 1, 'string'],
 
-      // boolean subject
-      array(TRUE, FALSE, 'boolean'),
-      array(FALSE, TRUE, 'integer'),
+          // string subject
+          [true, '1', 'string'],
+          [false, '1', 'integer'],
 
-      // array subject
-      array(TRUE, array(), 'array'),
-      array(FALSE, array('foo'), 'integer'),
+          // boolean subject
+          [true, false, 'boolean'],
+          [false, true, 'integer'],
 
-      // null subject
-      array(TRUE, NULL, 'NULL'),
-      array(FALSE, NULL, 'integer'),
+          // array subject
+          [true, [], 'array'],
+          [false, ['foo'], 'integer'],
 
-      // class subject
-      array(TRUE, new \SplQueue(), '\SplQueue'),
-      array(FALSE, new \SplQueue(), '\SplStack'),
-    );
-  }
+          // null subject
+          [true, null, 'NULL'],
+          [false, null, 'integer'],
+
+          // class subject
+          [true, new \SplQueue(), '\SplQueue'],
+          [false, new \SplQueue(), '\SplStack'],
+        ];
+    }
 }

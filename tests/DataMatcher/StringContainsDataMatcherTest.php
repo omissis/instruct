@@ -1,74 +1,71 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\rules\Unit\DataMatcher\ContainsDataMatcherTest.
- */
-
 namespace Drupal\Tests\rules\Unit\DataMatcher;
 
 use FOD\Instruct\DataMatcher\StringContainsDataMatcher;
 use FOD\Instruct\DataMatcher\DataMatcherInterface;
-use PHPUnit_Framework_TestCase;
+use PHPUnit_Framework_TestCase as TestCase;
 
-/**
- * @coversDefaultClass \FOD\Instruct\DataMatcher\StringContainsDataMatcher
- * @group rules
- */
-class StringContainsDataMatcherTest extends PHPUnit_Framework_TestCase {
-  /**
-   * @expectedException InvalidArgumentException
-   * @expectedExceptionMessage Argument "$fields" should be of type int.
-   */
-  public function testSetCaseSensitive() {
-    $matcher = StringContainsDataMatcher::create();
+class StringContainsDataMatcherTest extends TestCase
+{
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Argument "$fields" should be of type int.
+     */
+    public function testSetCaseSensitive()
+    {
+        $matcher = StringContainsDataMatcher::create();
 
-    $matcher->setCaseSensitive('foo');
-  }
+        $matcher->setCaseSensitive('foo');
+    }
 
-  /**
-   * @dataProvider caseSensitiveMatchesProvider
-   */
-  public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = StringContainsDataMatcher::create();
+    /**
+     * @dataProvider caseSensitiveMatchesProvider
+     */
+    public function testCaseSensitiveMatch($expectedMatchResult, $subject, $object)
+    {
+        $matcher = StringContainsDataMatcher::create();
 
-    $matcher->setCaseSensitive();
+        $matcher->setCaseSensitive();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  /**
-   * @dataProvider caseInsensitiveMatchesProvider
-   */
-  public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object) {
-    $matcher = StringContainsDataMatcher::create();
+    /**
+     * @dataProvider caseInsensitiveMatchesProvider
+     */
+    public function testCaseInsensitiveMatch($expectedMatchResult, $subject, $object)
+    {
+        $matcher = StringContainsDataMatcher::create();
 
-    $matcher->setCaseInsensitive();
+        $matcher->setCaseInsensitive();
 
-    $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
-  }
+        $this->assertSame($expectedMatchResult, $matcher->match($subject, $object));
+    }
 
-  public function caseSensitiveMatchesProvider() {
-    return array(
-      array(TRUE, 'foo', 'foo'),
-      array(TRUE, 'foobar', 'oob'),
-      array(TRUE, 'foobarfoobar', 'foo'),
+    public function caseSensitiveMatchesProvider()
+    {
+        return [
+            [true, 'foo', 'foo'],
+            [true, 'foobar', 'oob'],
+            [true, 'foobarfoobar', 'foo'],
 
-      array(FALSE, 'foo', 'FOO'),
-      array(FALSE, 'foobar', 'OOB'),
-      array(FALSE, 'foobarfoobar', 'FOO'),
-    );
-  }
+            [false, 'foo', 'FOO'],
+            [false, 'foobar', 'OOB'],
+            [false, 'foobarfoobar', 'FOO'],
+        ];
+    }
 
-  public function caseInsensitiveMatchesProvider() {
-    return array(
-      array(TRUE, 'foo', 'foo'),
-      array(TRUE, 'foobar', 'oob'),
-      array(TRUE, 'foobarfoobar', 'foo'),
+    public function caseInsensitiveMatchesProvider()
+    {
+        return [
+            [true, 'foo', 'foo'],
+            [true, 'foobar', 'oob'],
+            [true, 'foobarfoobar', 'foo'],
 
-      array(TRUE, 'foo', 'FOO'),
-      array(TRUE, 'foobar', 'OOB'),
-      array(TRUE, 'foobarfoobar', 'FOO'),
-    );
-  }
+            [true, 'foo', 'FOO'],
+            [true, 'foobar', 'OOB'],
+            [true, 'foobarfoobar', 'FOO'],
+        ];
+    }
 }

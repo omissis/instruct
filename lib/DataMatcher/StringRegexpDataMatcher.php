@@ -37,7 +37,7 @@ final class StringRegexpDataMatcher extends StringDataMatcher
      */
     protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object)
     {
-        $matches = array();
+        $matches = [];
 
         return 1 === preg_match($object->getValue(), $subject->getValue(), $matches, $this->flags, $this->offset);
     }

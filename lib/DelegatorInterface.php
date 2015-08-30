@@ -11,5 +11,5 @@ interface DelegatorInterface
      *
      * @return mixed
      */
-    public function createDelegateInstance(array $configuration = array());
+    public function createDelegateInstance(array $configuration = []);
 }

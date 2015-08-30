@@ -1,52 +1,48 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\rules\Unit\DataMatcher\RegexpDataMatcherTest.
- */
-
 namespace Drupal\Tests\rules\Unit\DataMatcher;
 
 use FOD\Instruct\DataMatcher\StringRegexpDataMatcher;
-use PHPUnit_Framework_TestCase;
 
-/**
- * @coversDefaultClass \FOD\Instruct\DataMatcher\StringRegexpDataMatcher
- * @group rules
- */
-class StringRegexpDataMatcherTest extends PHPUnit_Framework_TestCase {
+use PHPUnit_Framework_TestCase as TestCase;
 
-  /**
-   * The condition to be tested.
-   *
-   * @var \FOD\Instruct\DataMatcher\DataMatcherInterface
-   */
-  protected $matcher;
+class StringRegexpDataMatcherTest extends TestCase
+{
+    /**
+     * The condition to be tested.
+     *
+     * @var \FOD\Instruct\DataMatcher\DataMatcherInterface
+     */
+    protected $matcher;
 
-  /**
-   * {@inheritdoc}
-   */
-  public function setUp() {
-    parent::setUp();
-    $this->matcher = StringRegexpDataMatcher::create();
-  }
+    /**
+     * {@inheritdoc}
+     */
+    public function setUp()
+    {
+        parent::setUp();
 
-  /**
-   * @dataProvider matchesProvider
-   */
-  public function testMatch($expectedMatchResult, $subject, $object) {
-    $this->assertSame($expectedMatchResult, $this->matcher->match($subject, $object));
-  }
+        $this->matcher = StringRegexpDataMatcher::create();
+    }
 
-  public function matchesProvider() {
-    return array(
-      array(TRUE, 'foo', '/^foo$/'),
-      array(TRUE, 'FOO', '/foo/i'),
-      array(TRUE, 'BAR FOO BAZ', '/foo/i'),
+    /**
+     * @dataProvider matchesProvider
+     */
+    public function testMatch($expectedMatchResult, $subject, $object)
+    {
+        $this->assertSame($expectedMatchResult, $this->matcher->match($subject, $object));
+    }
 
-      array(FALSE, 'foobar', '/^bar/'),
-      array(FALSE, 'BARBAZ', '/bar$/i'),
-      array(FALSE, 'foobar', '/^bar$/i'),
-    );
-  }
+    public function matchesProvider()
+    {
+        return [
+            [true, 'foo', '/^foo$/'],
+            [true, 'FOO', '/foo/i'],
+            [true, 'BAR FOO BAZ', '/foo/i'],
+
+            [false, 'foobar', '/^bar/'],
+            [false, 'BARBAZ', '/bar$/i'],
+            [false, 'foobar', '/^bar$/i'],
+        ];
+    }
 }

@@ -28,7 +28,10 @@ class RuleTest extends TestCase
         $event = $this->prophesize('FOD\Instruct\Event\EventInterface');
         $context = $this->prophesize('FOD\Instruct\Context\ContextInterface');
 
-        $this->contextBuilder->addEvent($event->reveal())->willReturn($this->contextBuilder->reveal())->shouldBeCalledTimes(1);
+        $this->contextBuilder
+            ->addEvent($event->reveal())
+            ->willReturn($this->contextBuilder->reveal())->shouldBeCalledTimes(1);
+
         $this->contextBuilder->getContext()->willReturn($context->reveal())->shouldBeCalledTimes(1);
 
         $this->events->contain($event->reveal())->willReturn(true)->shouldBeCalledTimes(1);
@@ -54,19 +57,22 @@ class RuleTest extends TestCase
     }
 
     public function testDoesntApplyOnUnmatchedConditions()
-        {
-            $event = $this->prophesize('FOD\Instruct\Event\EventInterface');
-            $context = $this->prophesize('FOD\Instruct\Context\ContextInterface');
+    {
+        $event = $this->prophesize('FOD\Instruct\Event\EventInterface');
+        $context = $this->prophesize('FOD\Instruct\Context\ContextInterface');
 
-            $this->contextBuilder->addEvent($event->reveal())->willReturn($this->contextBuilder->reveal())->shouldBeCalledTimes(1);
-            $this->contextBuilder->getContext()->willReturn($context->reveal())->shouldBeCalledTimes(1);
+        $this->contextBuilder->addEvent($event->reveal())
+            ->willReturn($this->contextBuilder->reveal())
+            ->shouldBeCalledTimes(1);
 
-            $this->events->contain($event->reveal())->willReturn(true)->shouldBeCalledTimes(1);
+        $this->contextBuilder->getContext()->willReturn($context->reveal())->shouldBeCalledTimes(1);
 
-            $this->conditions->verify($context->reveal())->willReturn(false)->shouldBeCalledTimes(1);
+        $this->events->contain($event->reveal())->willReturn(true)->shouldBeCalledTimes(1);
 
-            $this->actions->execute()->shouldBeCalledTimes(0);
+        $this->conditions->verify($context->reveal())->willReturn(false)->shouldBeCalledTimes(1);
 
-            $this->rule->apply($event->reveal());
-        }
+        $this->actions->execute()->shouldBeCalledTimes(0);
+
+        $this->rule->apply($event->reveal());
+    }
 }

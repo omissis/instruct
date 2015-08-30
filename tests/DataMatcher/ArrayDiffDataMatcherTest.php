@@ -1,53 +1,50 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\rules\Unit\DataMatcher\ArrayDiffDataMatcherTest.
- */
-
 namespace Drupal\Tests\rules\Unit\DataMatcher;
 
 use FOD\Instruct\DataMatcher\ArrayDiffDataMatcher;
-use PHPUnit_Framework_TestCase;
 
-/**
- * @coversDefaultClass \FOD\Instruct\DataMatcher\ArrayDiffDataMatcher
- * @group rules
- */
-class ArrayDiffDataMatcherTest extends PHPUnit_Framework_TestCase {
-  /**
-   * @dataProvider arrayMatchingValuesProvider
-   */
-  public function testMatch($subject, $object) {
-    $matcher = ArrayDiffDataMatcher::create();
+use PHPUnit_Framework_TestCase as TestCase;
 
-    // The diff between subject[0] and subject[1] matches object.
-    $this->assertTrue($matcher->match($subject, $object));
-  }
+class ArrayDiffDataMatcherTest extends TestCase
+{
+    /**
+     * @dataProvider arrayMatchingValuesProvider
+     */
+    public function testMatch($subject, $object)
+    {
+        $matcher = ArrayDiffDataMatcher::create();
 
-  /**
-   * @dataProvider arrayNotMatchingValuesProvider
-   */
-  public function testDontMatch($subject, $object) {
-    $matcher = ArrayDiffDataMatcher::create();
+        // The diff between subject[0] and subject[1] matches object.
+        $this->assertTrue($matcher->match($subject, $object));
+    }
 
-    // The diff between subject[0] and subject[1] does not match object.
-    $this->assertFalse($matcher->match($subject, $object));
-  }
+    /**
+     * @dataProvider arrayNotMatchingValuesProvider
+     */
+    public function testDontMatch($subject, $object)
+    {
+        $matcher = ArrayDiffDataMatcher::create();
 
-  public function arrayMatchingValuesProvider() {
-    return [
-      [[[1], [1]],           []],
-      [[[1, 2], [1]],        [1 => 2]],
-      [[['a' => 1, 2], [1]], [2]],
-    ];
-  }
+        // The diff between subject[0] and subject[1] does not match object.
+        $this->assertFalse($matcher->match($subject, $object));
+    }
 
-  public function arrayNotMatchingValuesProvider() {
-    return [
-      [[[1], [2]],             [2]],
-      [[[2, 3], [1]],          [1]],
-      [[[1 => 'a', 'b'], [2]], [2]],
-    ];
-  }
+    public function arrayMatchingValuesProvider()
+    {
+        return [
+            [[[1], [1]],           []],
+            [[[1, 2], [1]],        [1 => 2]],
+            [[['a' => 1, 2], [1]], [2]],
+        ];
+    }
+
+    public function arrayNotMatchingValuesProvider()
+    {
+        return [
+            [[[1], [2]],             [2]],
+            [[[2, 3], [1]],          [1]],
+            [[[1 => 'a', 'b'], [2]], [2]],
+        ];
+    }
 }

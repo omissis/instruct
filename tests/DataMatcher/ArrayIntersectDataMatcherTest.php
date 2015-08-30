@@ -1,53 +1,50 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\Tests\rules\Unit\DataMatcher\ArrayIntersectDataMatcherTest.
- */
-
 namespace Drupal\Tests\rules\Unit\DataMatcher;
 
 use FOD\Instruct\DataMatcher\ArrayIntersectDataMatcher;
-use PHPUnit_Framework_TestCase;
 
-/**
- * @coversDefaultClass \FOD\Instruct\DataMatcher\ArrayIntersectDataMatcher
- * @group rules
- */
-class ArrayIntersectDataMatcherTest extends PHPUnit_Framework_TestCase {
-  /**
-   * @dataProvider arrayMatchingValuesProvider
-   */
-  public function testMatch($subject, $object) {
-    $matcher = ArrayIntersectDataMatcher::create();
+use PHPUnit_Framework_TestCase as TestCase;
 
-    // The intersection between subject[0] and subject[1] matches object.
-    $this->assertTrue($matcher->match($subject, $object));
-  }
+class ArrayIntersectDataMatcherTest extends TestCase
+{
+    /**
+     * @dataProvider arrayMatchingValuesProvider
+     */
+    public function testMatch($subject, $object)
+    {
+        $matcher = ArrayIntersectDataMatcher::create();
 
-  /**
-   * @dataProvider arrayNotMatchingValuesProvider
-   */
-  public function testDontMatch($subject, $object) {
-    $matcher = ArrayIntersectDataMatcher::create();
+        // The intersection between subject[0] and subject[1] matches object.
+        $this->assertTrue($matcher->match($subject, $object));
+    }
 
-    // The intersection between subject[0] and subject[1] does not match object.
-    $this->assertFalse($matcher->match($subject, $object));
-  }
+    /**
+     * @dataProvider arrayNotMatchingValuesProvider
+     */
+    public function testDontMatch($subject, $object)
+    {
+        $matcher = ArrayIntersectDataMatcher::create();
 
-  public function arrayMatchingValuesProvider() {
-    return [
-      [[[1], [1]],           [1]],
-      [[[1, 2], [1]],        [1]],
-      [[['a' => 1, 2], [1]], ['a' => 1]],
-    ];
-  }
+        // The intersection between subject[0] and subject[1] does not match object.
+        $this->assertFalse($matcher->match($subject, $object));
+    }
 
-  public function arrayNotMatchingValuesProvider() {
-    return [
-      [[[1], [2]],             [2]],
-      [[[2, 3], [1]],          [1]],
-      [[[1 => 'a', 'b'], [2]], [2]],
-    ];
-  }
+    public function arrayMatchingValuesProvider()
+    {
+        return [
+          [[[1], [1]],           [1]],
+          [[[1, 2], [1]],        [1]],
+          [[['a' => 1, 2], [1]], ['a' => 1]],
+        ];
+    }
+
+    public function arrayNotMatchingValuesProvider()
+    {
+        return [
+          [[[1], [2]],             [2]],
+          [[[2, 3], [1]],          [1]],
+          [[[1 => 'a', 'b'], [2]], [2]],
+        ];
+    }
 }

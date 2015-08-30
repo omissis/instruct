@@ -7,6 +7,8 @@ use PHPUnit_Framework_TestCase as TestCase;
 
 class ContextBuilderTest extends TestCase
 {
+    const SUT_FQDN = 'FOD\Instruct\Context\ContextBuilder';
+
     public function setUp()
     {
         $this->builder = new ContextBuilder();
@@ -19,7 +21,7 @@ class ContextBuilderTest extends TestCase
 
     public function testInstantiation()
     {
-        $this->assertInstanceOf('FOD\Instruct\Context\ContextBuilder', $this->builder);
+        $this->assertInstanceOf(self::SUT_FQDN, $this->builder);
     }
 
     public function testAddEventIsFluent()
@@ -27,8 +29,8 @@ class ContextBuilderTest extends TestCase
         $event = $this->prophesize('FOD\Instruct\Event\EventInterface');
         $anotherEvent = $this->prophesize('FOD\Instruct\Event\EventInterface');
 
-        $this->assertInstanceOf('FOD\Instruct\Context\ContextBuilder', $this->builder->addEvent($event->reveal()));
-        $this->assertInstanceOf('FOD\Instruct\Context\ContextBuilder', $this->builder->addEvent($anotherEvent->reveal()));
+        $this->assertInstanceOf(self::SUT_FQDN, $this->builder->addEvent($event->reveal()));
+        $this->assertInstanceOf(self::SUT_FQDN, $this->builder->addEvent($anotherEvent->reveal()));
     }
 
     public function testAddEvent()
@@ -54,8 +56,8 @@ class ContextBuilderTest extends TestCase
         $anotherEvent = $this->prophesize('FOD\Instruct\Event\EventInterface');
         $anotherEvent->getData()->willReturn(['baz' => 'qux'])->shouldBeCalledTimes(1);
 
-        $this->assertInstanceOf('FOD\Instruct\Context\ContextBuilder', $this->builder->addEvent($event->reveal()));
-        $this->assertInstanceOf('FOD\Instruct\Context\ContextBuilder', $this->builder->addEvent($anotherEvent->reveal()));
+        $this->assertInstanceOf(self::SUT_FQDN, $this->builder->addEvent($event->reveal()));
+        $this->assertInstanceOf(self::SUT_FQDN, $this->builder->addEvent($anotherEvent->reveal()));
 
         $context = $this->builder->getContext();
 
