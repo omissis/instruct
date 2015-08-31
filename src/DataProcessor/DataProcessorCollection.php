@@ -2,19 +2,19 @@
 
 namespace FOD\Instruct\DataProcessor;
 
-use ArrayObject;
+use FOD\Instruct\Collection\TypeCollection;
 
 /**
  * Class that holds a collection of DataProcessors.
  */
-class DataProcessorCollection extends ArrayObject implements DataProcessorInterface
+class DataProcessorCollection extends TypeCollection implements DataProcessorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function __construct($input, $flags = 0, $iteratorClass = 'ArrayIterator')
+    public function __construct(array $input = [])
     {
-        parent::__construct($input, $flags, $iteratorClass);
+        parent::__construct($input, 'FOD\Instruct\DataProcessor\DataProcessorInterface');
     }
 
     /**

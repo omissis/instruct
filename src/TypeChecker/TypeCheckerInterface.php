@@ -15,4 +15,11 @@ interface TypeCheckerInterface
      * @return null
      */
     public function check($value, $name = 'value');
+
+    /**
+     * Returns the last offending value.
+     *
+     * @return mixed
+     */
+    public function getLastInvalidValue();
 }

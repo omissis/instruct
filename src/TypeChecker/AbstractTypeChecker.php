@@ -7,11 +7,18 @@ use InvalidArgumentException;
 abstract class AbstractTypeChecker implements TypeCheckerInterface
 {
     /**
+     * @var mixed
+     */
+    private $lastInvalidValue;
+
+    /**
      * {@inheritdoc}
      */
     public function check($value, $name = 'value')
     {
         if (!$this->doCheck($value)) {
+            $this->lastInvalidValue = $value;
+
             throw new InvalidArgumentException(sprintf(
                 "%s should be %s %s. '%s' given.",
                 ucfirst($name),
@@ -20,6 +27,14 @@ abstract class AbstractTypeChecker implements TypeCheckerInterface
                 trim(var_export($value, true), "'")
             ));
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLastInvalidValue()
+    {
+        return $this->lastInvalidValue;
     }
 
     /**

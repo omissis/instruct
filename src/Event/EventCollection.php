@@ -2,22 +2,13 @@
 
 namespace FOD\Instruct\Event;
 
-use ArrayObject;
-use InvalidArgumentException;
+use FOD\Instruct\Collection\TypeCollection;
 
-class EventCollection extends ArrayObject
+class EventCollection extends TypeCollection
 {
-    public function __construct($input = [], $flags = 0, $iteratorClass = 'ArrayIterator')
+    public function __construct(array $input = [])
     {
-        array_walk($input, function ($event, $index) {
-            if (!$event instanceof EventInterface) {
-                throw new InvalidArgumentException(
-                    "Element $index of the input array is not an instance of FOD\Instruct\Event\EventInterface."
-                );
-            }
-        });
-
-        parent::__construct($input, $flags, $iteratorClass);
+        parent::__construct($input, 'FOD\Instruct\Event\EventInterface');
     }
 
     public function contains(EventInterface $event)
