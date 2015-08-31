@@ -2,10 +2,12 @@
 
 namespace FOD\Instruct\DataProcessor;
 
+use ArrayObject;
+
 /**
  * Class that holds a collection of DataProcessors.
  */
-class DataProcessorCollection extends \ArrayObject implements DataProcessorInterface
+class DataProcessorCollection extends ArrayObject implements DataProcessorInterface
 {
     /**
      * {@inheritdoc}

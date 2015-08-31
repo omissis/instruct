@@ -67,14 +67,14 @@ abstract class DataMatcher implements DataMatcherInterface
      * @param int $fields
      * @param DataProcessorInterface $dataProcessor
      */
-    protected function addFieldsProcessor($id, $fields, DataProcessorInterface $dataProcessor)
+    protected function setFieldsProcessor($id, $fields, DataProcessorInterface $dataProcessor)
     {
         if (in_array($fields, [DataMatcherInterface::FIELD_SUBJECT, DataMatcherInterface::FIELD_BOTH], true)) {
-            $this->subjectProcessors->append($dataProcessor);
+            $this->subjectProcessors[$id] = $dataProcessor;
         }
 
         if (in_array($fields, [DataMatcherInterface::FIELD_OBJECT, DataMatcherInterface::FIELD_BOTH], true)) {
-            $this->objectProcessors->append($dataProcessor);
+            $this->objectProcessors[$id] = $dataProcessor;
         }
     }
 

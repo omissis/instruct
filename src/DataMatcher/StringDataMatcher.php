@@ -37,7 +37,7 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
             throw new InvalidArgumentException('Argument "$fields" should be of type int.');
         }
 
-        $this->addFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields, new LowercaseDataProcessor());
+        $this->setFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields, new LowercaseDataProcessor());
     }
 
     /**
@@ -51,7 +51,7 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
             throw new InvalidArgumentException('Argument "$fields" should be of type int.');
         }
 
-        $this->addFieldsProcessor(self::MATCHER_ID_TRIM, $fields, new TrimDataProcessor());
+        $this->setFieldsProcessor(self::MATCHER_ID_TRIM, $fields, new TrimDataProcessor());
     }
 
     /**
