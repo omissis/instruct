@@ -59,17 +59,13 @@ final class Rule
      */
     public function apply(EventInterface $event)
     {
-        $eventWasFound = $this->eventNames->contains($event->getName());
-
-        if (!$eventWasFound) {
+        if (!$this->eventNames->contains($event->getName())) {
             return;
         }
 
         $context = $this->contextBuilder->addEvent($event)->getContext();
 
-        $conditionsWereVerified = $this->conditions->verify($context);
-
-        if (!$conditionsWereVerified) {
+        if (!$this->conditions->verify($context)) {
             return;
         }
 
