@@ -35,8 +35,8 @@ abstract class DataMatcher implements DataMatcherInterface
     /**
      * @param DataProcessorCollection $subjectProcessors
      * @param DataProcessorCollection $objectProcessors
-     * @param Constraint $subjectConstraints
-     * @param Constraint $objectConstraints
+     * @param Constraint|null $subjectConstraints
+     * @param Constraint|null $objectConstraints
      */
     public function __construct(
         DataProcessorCollection $subjectProcessors,

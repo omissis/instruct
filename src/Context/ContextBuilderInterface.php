@@ -13,6 +13,8 @@ interface ContextBuilderInterface
      * Add a new event to this context.
      *
      * @param EventInterface $event
+     *
+     * @return ContextBuilder
      */
     public function addEvent(EventInterface $event);
 

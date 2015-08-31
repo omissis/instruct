@@ -10,6 +10,8 @@ interface ActionInterface
      * Execute the action.
      *
      * @param ContextInterface $context
+     *
+     * @return null
      */
     public function execute(ContextInterface $context);
 

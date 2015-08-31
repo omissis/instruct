@@ -11,9 +11,7 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
     const MATCHER_ID_TRIM = 'matcher_string_trim';
 
     /**
-     * Set the field that should be matched in a case sensitive fashion.
-     *
-     * @param int $fieldId
+     * {@inheritdoc}
      */
     public function setCaseSensitive($fieldId = DataMatcherField::VALUE_BOTH)
     {
@@ -24,9 +22,7 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
     }
 
     /**
-     * Unset the field that should be matched in a case sensitive fashion.
-     *
-     * @param int $fieldId
+     * {@inheritdoc}
      */
     public function setCaseInsensitive($fieldId = DataMatcherField::VALUE_BOTH)
     {
@@ -38,9 +34,7 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
     }
 
     /**
-     * Set the field that should be trimmed before matching.
-     *
-     * @param int $fieldId
+     * {@inheritdoc}
      */
     public function setTrimmed($fieldId = DataMatcherField::VALUE_BOTH)
     {
@@ -52,9 +46,7 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
     }
 
     /**
-     * Unset the field that should be trimmed before matching.
-     *
-     * @param int $fieldId
+     * {@inheritdoc}
      */
     public function unsetTrimmed($fieldId = DataMatcherField::VALUE_BOTH)
     {

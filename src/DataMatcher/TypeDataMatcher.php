@@ -8,8 +8,8 @@ use FOD\Instruct\Reflection\Fqdn;
 final class TypeDataMatcher extends DataMatcher
 {
     /**
-     * @param object|string $subject
-     * @param string $object
+     * @param DataMatcherArgument $subject
+     * @param DataMatcherArgument $object
      *
      * @return bool
      */
