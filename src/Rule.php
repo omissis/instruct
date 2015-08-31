@@ -59,7 +59,7 @@ final class Rule
      */
     public function apply(EventInterface $event)
     {
-        $eventWasFound = $this->eventNames->contain($event->getName());
+        $eventWasFound = $this->eventNames->contains($event->getName());
 
         if (!$eventWasFound) {
             return;

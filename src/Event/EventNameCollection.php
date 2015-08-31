@@ -20,7 +20,7 @@ class EventNameCollection extends ArrayObject
         parent::__construct($input, $flags, $iteratorClass);
     }
 
-    public function contain(EventName $eventName)
+    public function contains(EventName $eventName)
     {
         foreach ($this as $innerEventName) {
             if ($innerEventName->isEqualTo($eventName)) {

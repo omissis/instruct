@@ -38,8 +38,8 @@ class ActionCollectionTest extends TestCase
 
         $actions = new ActionCollection([$action1->reveal()]);
 
-        $this->assertTrue($actions->contain($action1->reveal()));
-        $this->assertFalse($actions->contain($action2->reveal()));
+        $this->assertTrue($actions->contains($action1->reveal()));
+        $this->assertFalse($actions->contains($action2->reveal()));
     }
 
     public function testComparesToActions()

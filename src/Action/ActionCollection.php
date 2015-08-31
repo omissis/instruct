@@ -29,7 +29,7 @@ class ActionCollection extends ArrayObject implements ActionInterface
         }
     }
 
-    public function contain(ActionInterface $action)
+    public function contains(ActionInterface $action)
     {
         foreach ($this as $innerAction) {
             if ($innerAction->isEqualTo($action)) {

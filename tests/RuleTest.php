@@ -52,7 +52,7 @@ class RuleTest extends TestCase
 
         $this->contextBuilder->getContext()->willReturn($this->context->reveal())->shouldBeCalledTimes(1);
 
-        $this->eventNames->contain($eventName)->willReturn(true)->shouldBeCalledTimes(1);
+        $this->eventNames->contains($eventName)->willReturn(true)->shouldBeCalledTimes(1);
 
         $this->conditions->verify($this->context->reveal())->willReturn(true)->shouldBeCalledTimes(1);
 
@@ -67,7 +67,7 @@ class RuleTest extends TestCase
 
         $this->event->getName()->willReturn($eventName);
 
-        $this->eventNames->contain($eventName)->willReturn(false)->shouldBeCalledTimes(1);
+        $this->eventNames->contains($eventName)->willReturn(false)->shouldBeCalledTimes(1);
 
         $this->conditions->verify()->shouldBeCalledTimes(0);
 
@@ -88,7 +88,7 @@ class RuleTest extends TestCase
 
         $this->contextBuilder->getContext()->willReturn($this->context->reveal())->shouldBeCalledTimes(1);
 
-        $this->eventNames->contain($eventName)->willReturn(true)->shouldBeCalledTimes(1);
+        $this->eventNames->contains($eventName)->willReturn(true)->shouldBeCalledTimes(1);
 
         $this->conditions->verify($this->context->reveal())->willReturn(false)->shouldBeCalledTimes(1);
 

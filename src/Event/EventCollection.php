@@ -20,7 +20,7 @@ class EventCollection extends ArrayObject
         parent::__construct($input, $flags, $iteratorClass);
     }
 
-    public function contain(EventInterface $event)
+    public function contains(EventInterface $event)
     {
         foreach ($this as $innerEvent) {
             if ($innerEvent->isEqualTo($event)) {

@@ -38,7 +38,7 @@ class EventCollectionTest extends TestCase
 
         $events = new EventCollection([$event1->reveal()]);
 
-        $this->assertTrue($events->contain($event1->reveal()));
-        $this->assertFalse($events->contain($event2->reveal()));
+        $this->assertTrue($events->contains($event1->reveal()));
+        $this->assertFalse($events->contains($event2->reveal()));
     }
 }
