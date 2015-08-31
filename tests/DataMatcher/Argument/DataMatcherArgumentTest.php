@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\rules\Unit\DataMatcher\Argument;
+namespace FOD\Instruct\Tests\DataMatcher\Argument;
 
 use PHPUnit_Framework_TestCase as TestCase;
 

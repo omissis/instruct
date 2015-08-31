@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\rules\Unit\DataMatcher;
+namespace FOD\Instruct\Tests\DataMatcher;
 
 use FOD\Instruct\DataMatcher\ArrayIntersectDataMatcher;
 

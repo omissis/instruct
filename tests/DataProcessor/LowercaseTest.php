@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\Tests\rules\Unit\DataProcessor;
+namespace FOD\Instruct\Tests\DataProcessor;
 
 use PHPUnit_Framework_TestCase as TestCase;
 
