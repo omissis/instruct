@@ -14,7 +14,7 @@ final class ArrayUnionDataMatcher extends AbstractDataMatcher
      */
     protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object)
     {
-        ArrayTypeChecker::check($subject->getValue(), 'subject');
+        ArrayTypeChecker::scheck($subject->getValue(), 'subject');
 
         $union = array_merge(
             array_intersect($subject->getValue()[0], $subject->getValue()[1]),

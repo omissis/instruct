@@ -19,7 +19,7 @@ class DataMatcherFieldTest extends TestCase
 
     /**
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Data matcher field should be an integer. 'array (
+     * @expectedExceptionMessage Data matcher field should be an int. 'array (
      * )' given.
      */
     public function testWrongTypeInstatiation()

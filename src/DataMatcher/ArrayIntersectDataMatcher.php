@@ -14,7 +14,7 @@ final class ArrayIntersectDataMatcher extends AbstractDataMatcher
      */
     protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object)
     {
-        ArrayTypeChecker::check($subject->getValue(), 'subject');
+        ArrayTypeChecker::scheck($subject->getValue(), 'subject');
 
         $intersect = array_intersect($subject->getValue()[0], $subject->getValue()[1]);
 

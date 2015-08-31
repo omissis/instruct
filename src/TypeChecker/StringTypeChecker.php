@@ -4,19 +4,29 @@ namespace FOD\Instruct\TypeChecker;
 
 use InvalidArgumentException;
 
-final class StringTypeChecker implements TypeCheckerInterface
+final class StringTypeChecker extends AbstractTypeChecker
 {
     /**
      * {@inheritdoc}
      */
-    public static function check($value, $name = 'value')
+    protected function doCheck($value)
     {
-        if (!is_string($value)) {
-            throw new InvalidArgumentException(sprintf(
-                "%s should be a string. '%s' given.",
-                ucfirst($name),
-                var_export($value, true)
-            ));
-        }
+        return is_string($value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getTypeName()
+    {
+        return 'string';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getTypeNameArticle()
+    {
+        return 'a';
     }
 }

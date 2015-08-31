@@ -15,7 +15,7 @@ final class EventName
      */
     public function __construct($eventName)
     {
-        StringTypeChecker::check($eventName, 'Event name');
+        StringTypeChecker::scheck($eventName, 'Event name');
 
         $this->eventName = $eventName;
     }

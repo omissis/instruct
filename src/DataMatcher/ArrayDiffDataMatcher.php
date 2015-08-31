@@ -14,7 +14,7 @@ final class ArrayDiffDataMatcher extends AbstractDataMatcher
      */
     protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object)
     {
-        ArrayTypeChecker::check($subject->getValue(), 'subject');
+        ArrayTypeChecker::scheck($subject->getValue(), 'subject');
 
         $diff = array_diff($subject->getValue()[0], $subject->getValue()[1]);
 

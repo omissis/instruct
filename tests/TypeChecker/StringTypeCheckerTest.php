@@ -8,9 +8,21 @@ use FOD\Instruct\TypeChecker\StringTypeChecker;
 
 class StringTypeCheckerTest extends TestCase
 {
+    public function setUp()
+    {
+        $this->checker = new StringTypeChecker();
+    }
+
+    public function tearDown()
+    {
+        $this->checker = null;
+    }
+
     public function testCheckPasses()
     {
-        $this->assertNull(StringTypeChecker::check('foo'));
+        $this->assertNull($this->checker->check('foo'));
+
+        $this->assertNull(StringTypeChecker::scheck('foo'));
     }
 
     /**
@@ -19,6 +31,8 @@ class StringTypeCheckerTest extends TestCase
      */
     public function testCheckFails()
     {
-        $this->assertNull(StringTypeChecker::check(1, 'bar'));
+        $this->assertNull($this->checker->check(1, 'bar'));
+
+        $this->assertNull(StringTypeChecker::scheck(1, 'bar'));
     }
 }

@@ -15,7 +15,7 @@ final class Fqdn
      */
     public function __construct($fqdn)
     {
-        StringTypeChecker::check($fqdn, 'FQDN');
+        StringTypeChecker::scheck($fqdn, 'FQDN');
 
         $this->fqdn = $fqdn;
     }

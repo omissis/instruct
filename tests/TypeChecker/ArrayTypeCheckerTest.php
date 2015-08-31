@@ -8,17 +8,31 @@ use FOD\Instruct\TypeChecker\ArrayTypeChecker;
 
 class ArrayTypeCheckerTest extends TestCase
 {
+    public function setUp()
+    {
+        $this->checker = new ArrayTypeChecker();
+    }
+
+    public function tearDown()
+    {
+        $this->checker = null;
+    }
+
     public function testCheckPasses()
     {
-        $this->assertNull(ArrayTypeChecker::check([]));
+        $this->assertNull($this->checker->check([]));
+
+        $this->assertNull(ArrayTypeChecker::scheck([]));
     }
 
     /**
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Bar should be an array. ''foo'' given.
+     * @expectedExceptionMessage Bar should be an array. 'foo' given.
      */
     public function testCheckFails()
     {
-        $this->assertNull(ArrayTypeChecker::check('foo', 'bar'));
+        $this->assertNull($this->checker->check('foo', 'bar'));
+
+        $this->assertNull(ArrayTypeChecker::scheck('foo', 'bar'));
     }
 }

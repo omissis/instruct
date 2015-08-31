@@ -14,5 +14,5 @@ interface TypeCheckerInterface
      *
      * @return null
      */
-    public static function check($value, $name = 'value');
+    public function check($value, $name = 'value');
 }

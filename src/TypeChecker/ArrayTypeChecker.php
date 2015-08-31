@@ -4,19 +4,21 @@ namespace FOD\Instruct\TypeChecker;
 
 use InvalidArgumentException;
 
-final class ArrayTypeChecker implements TypeCheckerInterface
+final class ArrayTypeChecker extends AbstractTypeChecker
 {
     /**
      * {@inheritdoc}
      */
-    public static function check($value, $name = 'value')
+    protected function doCheck($value)
     {
-        if (!is_array($value)) {
-            throw new InvalidArgumentException(sprintf(
-                "%s should be an array. '%s' given.",
-                ucfirst($name),
-                var_export($value, true)
-            ));
-        }
+        return is_array($value);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getTypeName()
+    {
+        return 'array';
     }
 }

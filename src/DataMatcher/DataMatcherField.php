@@ -30,7 +30,7 @@ final class DataMatcherField
             self::VALUE_BOTH,
         ];
 
-        IntTypeChecker::check($dataMatcherField, 'Data matcher field');
+        IntTypeChecker::scheck($dataMatcherField, 'Data matcher field');
 
         if (!in_array($dataMatcherField, $values, true)) {
             throw new InvalidArgumentException(sprintf(
