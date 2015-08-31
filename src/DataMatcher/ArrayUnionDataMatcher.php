@@ -3,6 +3,7 @@
 namespace FOD\Instruct\DataMatcher;
 
 use FOD\Instruct\DataMatcher\Argument\DataMatcherArgument;
+use FOD\Instruct\TypeChecker\ArrayTypeChecker;
 
 use InvalidArgumentException;
 
@@ -13,12 +14,7 @@ final class ArrayUnionDataMatcher extends AbstractDataMatcher
      */
     protected function doMatch(DataMatcherArgument $subject, DataMatcherArgument $object)
     {
-        if (!is_array($subject->getValue())) {
-            throw new InvalidArgumentException(sprintf(
-                "Subject shoud be an array. '%s' given.",
-                var_export($subject->getValue(), true)
-            ));
-        }
+        ArrayTypeChecker::check($subject->getValue(), 'subject');
 
         $union = array_merge(
             array_intersect($subject->getValue()[0], $subject->getValue()[1]),

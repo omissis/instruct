@@ -4,7 +4,7 @@ namespace FOD\Instruct\Event;
 
 use InvalidArgumentException;
 
-use FOD\Instruct\Event\EventInterface;
+use FOD\Instruct\TypeChecker\StringTypeChecker;
 
 final class EventName
 {
@@ -15,12 +15,7 @@ final class EventName
      */
     public function __construct($eventName)
     {
-        if (!is_string($eventName)) {
-            throw new InvalidArgumentException(sprintf(
-                "Event name should be a string. '%s' given.",
-                var_export($eventName, true)
-            ));
-        }
+        StringTypeChecker::check($eventName, 'Event name');
 
         $this->eventName = $eventName;
     }

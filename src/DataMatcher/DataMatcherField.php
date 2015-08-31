@@ -2,6 +2,8 @@
 
 namespace FOD\Instruct\DataMatcher;
 
+use FOD\Instruct\TypeChecker\IntTypeChecker;
+
 use InvalidArgumentException;
 
 final class DataMatcherField
@@ -28,12 +30,7 @@ final class DataMatcherField
             self::VALUE_BOTH,
         ];
 
-        if (!is_int($dataMatcherField)) {
-            throw new InvalidArgumentException(sprintf(
-                "Data matcher field should be an integer. '%s' given.",
-                var_export($dataMatcherField, true)
-            ));
-        }
+        IntTypeChecker::check($dataMatcherField, 'Data matcher field');
 
         if (!in_array($dataMatcherField, $values, true)) {
             throw new InvalidArgumentException(sprintf(

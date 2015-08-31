@@ -2,6 +2,8 @@
 
 namespace FOD\Instruct\Reflection;
 
+use FOD\Instruct\TypeChecker\StringTypeChecker;
+
 use InvalidArgumentException;
 
 final class Fqdn
@@ -13,12 +15,7 @@ final class Fqdn
      */
     public function __construct($fqdn)
     {
-        if (!is_string($fqdn)) {
-            throw new InvalidArgumentException(sprintf(
-                "FQDN should be a string. '%s' given.",
-                var_export($fqdn, true)
-            ));
-        }
+        StringTypeChecker::check($fqdn, 'FQDN');
 
         $this->fqdn = $fqdn;
     }
