@@ -2,8 +2,6 @@
 
 namespace FOD\Instruct\Event;
 
-use InvalidArgumentException;
-
 use FOD\Instruct\TypeChecker\StringTypeChecker;
 
 final class EventName

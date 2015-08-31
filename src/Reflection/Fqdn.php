@@ -4,8 +4,6 @@ namespace FOD\Instruct\Reflection;
 
 use FOD\Instruct\TypeChecker\StringTypeChecker;
 
-use InvalidArgumentException;
-
 final class Fqdn
 {
     private $fqdn;

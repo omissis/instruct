@@ -2,8 +2,6 @@
 
 namespace FOD\Instruct\TypeChecker;
 
-use InvalidArgumentException;
-
 final class IntTypeChecker extends AbstractTypeChecker
 {
     /**

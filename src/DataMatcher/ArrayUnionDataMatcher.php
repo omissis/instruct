@@ -5,8 +5,6 @@ namespace FOD\Instruct\DataMatcher;
 use FOD\Instruct\DataMatcher\Argument\DataMatcherArgument;
 use FOD\Instruct\TypeChecker\ArrayTypeChecker;
 
-use InvalidArgumentException;
-
 final class ArrayUnionDataMatcher extends AbstractDataMatcher
 {
     /**
