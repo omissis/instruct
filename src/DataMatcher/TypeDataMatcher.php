@@ -24,10 +24,6 @@ final class TypeDataMatcher extends AbstractDataMatcher
             }
         }
 
-        if ($object->getValue() === gettype($subject->getValue())) {
-            return true;
-        }
-
-        return false;
+        return $object->getValue() === gettype($subject->getValue());
     }
 }
