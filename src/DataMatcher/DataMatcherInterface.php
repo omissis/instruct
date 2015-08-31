@@ -7,11 +7,6 @@ namespace FOD\Instruct\DataMatcher;
  */
 interface DataMatcherInterface
 {
-    const FIELD_NONE    = 0;
-    const FIELD_SUBJECT = 1;
-    const FIELD_OBJECT  = 2;
-    const FIELD_BOTH    = 3;
-
     /**
      * Decides whether a subject's value matches an object's one
      * given the concrete matching rule.

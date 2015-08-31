@@ -13,7 +13,7 @@ interface StringDataMatcherInterface extends DataMatcherInterface
      * @param int $field
      *   What field the Case Sensitiveness should be applied to.
      */
-    public function setCaseSensitive($field = DataMatcherInterface::FIELD_BOTH);
+    public function setCaseSensitive($field = DataMatcherField::VALUE_BOTH);
 
     /**
      * Set what fields should be not treated as case sensitive.
@@ -21,7 +21,7 @@ interface StringDataMatcherInterface extends DataMatcherInterface
      * @param int $field
      *   What field the Case Sensitiveness should not be applied to.
      */
-    public function setCaseInsensitive($field = DataMatcherInterface::FIELD_BOTH);
+    public function setCaseInsensitive($field = DataMatcherField::VALUE_BOTH);
 
     /**
      * Set what fields should be trimmed.
@@ -29,7 +29,7 @@ interface StringDataMatcherInterface extends DataMatcherInterface
      * @param int $field
      *   What field the Trimming should be applied to.
      */
-    public function setTrimmed($field = DataMatcherInterface::FIELD_BOTH);
+    public function setTrimmed($field = DataMatcherField::VALUE_BOTH);
 
     /**
      * Set what fields should not be trimmed.
@@ -37,5 +37,5 @@ interface StringDataMatcherInterface extends DataMatcherInterface
      * @param int $field
      *   What field the Trimming should not be applied to.
      */
-    public function unsetTrimmed($field = DataMatcherInterface::FIELD_BOTH);
+    public function unsetTrimmed($field = DataMatcherField::VALUE_BOTH);
 }

@@ -10,7 +10,7 @@ class StringContainsDataMatcherTest extends TestCase
 {
     /**
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Argument "$fields" should be of type int.
+     * @expectedExceptionMessage Data matcher field should be an integer. ''foo'' given.
      */
     public function testSetCaseSensitive()
     {

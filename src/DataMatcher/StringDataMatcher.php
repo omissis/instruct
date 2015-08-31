@@ -13,58 +13,56 @@ abstract class StringDataMatcher extends DataMatcher implements StringDataMatche
     const MATCHER_ID_TRIM = 'matcher_string_trim';
 
     /**
-     * Set the fields that should be matched in a case sensitive fashion.
+     * Set the field that should be matched in a case sensitive fashion.
      *
-     * @param int $fields
+     * @param int $fieldId
      */
-    public function setCaseSensitive($fields = DataMatcherInterface::FIELD_BOTH)
+    public function setCaseSensitive($fieldId = DataMatcherField::VALUE_BOTH)
     {
-        if (!is_int($fields)) {
-            throw new InvalidArgumentException('Argument "$fields" should be of type int.');
-        }
-
-        $this->removeFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields);
+        $this->removeFieldsProcessor(
+            self::MATCHER_ID_CASE_SENSITIVE,
+            new DataMatcherField($fieldId)
+        );
     }
 
     /**
-     * Unset the fields that should be matched in a case sensitive fashion.
+     * Unset the field that should be matched in a case sensitive fashion.
      *
-     * @param int $fields
+     * @param int $fieldId
      */
-    public function setCaseInsensitive($fields = DataMatcherInterface::FIELD_BOTH)
+    public function setCaseInsensitive($fieldId = DataMatcherField::VALUE_BOTH)
     {
-        if (!is_int($fields)) {
-            throw new InvalidArgumentException('Argument "$fields" should be of type int.');
-        }
-
-        $this->setFieldsProcessor(self::MATCHER_ID_CASE_SENSITIVE, $fields, new LowercaseDataProcessor());
+        $this->setFieldsProcessor(
+            self::MATCHER_ID_CASE_SENSITIVE,
+            new DataMatcherField($fieldId),
+            new LowercaseDataProcessor()
+        );
     }
 
     /**
-     * Set the fields that should be trimmed before matching.
+     * Set the field that should be trimmed before matching.
      *
-     * @param int $fields
+     * @param int $fieldId
      */
-    public function setTrimmed($fields = DataMatcherInterface::FIELD_BOTH)
+    public function setTrimmed($fieldId = DataMatcherField::VALUE_BOTH)
     {
-        if (!is_int($fields)) {
-            throw new InvalidArgumentException('Argument "$fields" should be of type int.');
-        }
-
-        $this->setFieldsProcessor(self::MATCHER_ID_TRIM, $fields, new TrimDataProcessor());
+        $this->setFieldsProcessor(
+            self::MATCHER_ID_TRIM,
+            new DataMatcherField($fieldId),
+            new TrimDataProcessor()
+        );
     }
 
     /**
-     * Unset the fields that should be trimmed before matching.
+     * Unset the field that should be trimmed before matching.
      *
-     * @param int $fields
+     * @param int $fieldId
      */
-    public function unsetTrimmed($fields = DataMatcherInterface::FIELD_BOTH)
+    public function unsetTrimmed($fieldId = DataMatcherField::VALUE_BOTH)
     {
-        if (!is_int($fields)) {
-            throw new InvalidArgumentException('Argument "$fields" should be of type int.');
-        }
-
-        $this->removeFieldsProcessor(self::MATCHER_ID_TRIM, $fields);
+        $this->removeFieldsProcessor(
+            self::MATCHER_ID_TRIM,
+            new DataMatcherField($fieldId)
+        );
     }
 }

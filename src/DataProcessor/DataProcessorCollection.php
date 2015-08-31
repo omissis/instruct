@@ -12,9 +12,9 @@ class DataProcessorCollection extends ArrayObject implements DataProcessorInterf
     /**
      * {@inheritdoc}
      */
-    public function __construct($input, $flags = 0, $iterator_class = 'ArrayIterator')
+    public function __construct($input, $flags = 0, $iteratorClass = 'ArrayIterator')
     {
-        parent::__construct($input, $flags, $iterator_class);
+        parent::__construct($input, $flags, $iteratorClass);
     }
 
     /**

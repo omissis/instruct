@@ -63,41 +63,6 @@ abstract class DataMatcher implements DataMatcherInterface
     }
 
     /**
-     * @param string $id
-     * @param int $fields
-     * @param DataProcessorInterface $dataProcessor
-     */
-    protected function setFieldsProcessor($id, $fields, DataProcessorInterface $dataProcessor)
-    {
-        if (in_array($fields, [DataMatcherInterface::FIELD_SUBJECT, DataMatcherInterface::FIELD_BOTH], true)) {
-            $this->subjectProcessors[$id] = $dataProcessor;
-        }
-
-        if (in_array($fields, [DataMatcherInterface::FIELD_OBJECT, DataMatcherInterface::FIELD_BOTH], true)) {
-            $this->objectProcessors[$id] = $dataProcessor;
-        }
-    }
-
-    /**
-     * @param string $id
-     * @param int $fields
-     */
-    protected function removeFieldsProcessor($id, $fields)
-    {
-        if (in_array($fields, [DataMatcherInterface::FIELD_SUBJECT, DataMatcherInterface::FIELD_BOTH], true)) {
-            if (isset($this->subjectProcessors[$id])) {
-                unset($this->subjectProcessors[$id]);
-            }
-        }
-
-        if (in_array($fields, [DataMatcherInterface::FIELD_OBJECT, DataMatcherInterface::FIELD_BOTH], true)) {
-            if (isset($this->objectProcessors[$id])) {
-                unset($this->objectProcessors[$id]);
-            }
-        }
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function match($subject, $object)
@@ -109,6 +74,41 @@ abstract class DataMatcher implements DataMatcherInterface
             new DataMatcherArgument($processedSubject, $this->subjectConstraints),
             new DataMatcherArgument($processedObject, $this->objectConstraints)
         );
+    }
+
+    /**
+     * @param string $id
+     * @param DataMatcherField       $field
+     * @param DataProcessorInterface $dataProcessor
+     */
+    protected function setFieldsProcessor($id, DataMatcherField $field, DataProcessorInterface $dataProcessor)
+    {
+        if ($field->supportsSubject()) {
+            $this->subjectProcessors[$id] = $dataProcessor;
+        }
+
+        if ($field->supportsObject()) {
+            $this->objectProcessors[$id] = $dataProcessor;
+        }
+    }
+
+    /**
+     * @param string $id
+     * @param DataMatcherField $field
+     */
+    protected function removeFieldsProcessor($id, DataMatcherField $field)
+    {
+        if ($field->supportsSubject()) {
+            if (isset($this->subjectProcessors[$id])) {
+                unset($this->subjectProcessors[$id]);
+            }
+        }
+
+        if ($field->supportsObject()) {
+            if (isset($this->objectProcessors[$id])) {
+                unset($this->objectProcessors[$id]);
+            }
+        }
     }
 
     /**
