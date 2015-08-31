@@ -6,7 +6,7 @@ use FOD\Instruct\DataMatcher\Argument\DataMatcherArgument;
 
 use InvalidArgumentException;
 
-final class ArrayDiffDataMatcher extends DataMatcher
+final class ArrayDiffDataMatcher extends AbstractDataMatcher
 {
     /**
      * {@inheritdoc}

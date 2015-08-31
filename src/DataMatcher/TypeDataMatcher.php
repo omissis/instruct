@@ -5,7 +5,7 @@ namespace FOD\Instruct\DataMatcher;
 use FOD\Instruct\DataMatcher\Argument\DataMatcherArgument;
 use FOD\Instruct\Reflection\Fqdn;
 
-final class TypeDataMatcher extends DataMatcher
+final class TypeDataMatcher extends AbstractDataMatcher
 {
     /**
      * @param DataMatcherArgument $subject

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Base abstract class for Data Matchers.
  */
-abstract class DataMatcher implements DataMatcherInterface
+abstract class AbstractDataMatcher implements DataMatcherInterface
 {
     /**
      * @var DataProcessorCollection

@@ -4,7 +4,7 @@ namespace FOD\Instruct\DataMatcher;
 
 use FOD\Instruct\DataMatcher\Argument\DataMatcherArgument;
 
-final class ArrayContainsDataMatcher extends DataMatcher
+final class ArrayContainsDataMatcher extends AbstractDataMatcher
 {
     /**
      * {@inheritdoc}
