@@ -81,7 +81,6 @@ abstract class DataMatcher implements DataMatcherInterface
     /**
      * @param string $id
      * @param int $fields
-     * @param DataProcessorInterface $dataProcessor
      */
     protected function removeFieldsProcessor($id, $fields)
     {

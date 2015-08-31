@@ -14,7 +14,7 @@ interface ActionInterface
     public function execute(ContextInterface $context);
 
     /**
-     * @param ActionInterface $event
+     * @param ActionInterface $action
      *
      * @return boolean
      */
