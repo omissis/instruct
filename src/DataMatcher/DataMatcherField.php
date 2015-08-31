@@ -17,11 +17,6 @@ final class DataMatcherField
     private $dataMatcherField;
 
     /**
-     * @var array
-     */
-    private $values;
-
-    /**
      * @param int $dataMatcherField
      */
     public function __construct($dataMatcherField)
