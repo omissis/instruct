@@ -5,8 +5,6 @@ namespace FOD\Instruct\DataMatcher;
 use FOD\Instruct\DataProcessor\LowercaseDataProcessor;
 use FOD\Instruct\DataProcessor\TrimDataProcessor;
 
-use InvalidArgumentException;
-
 abstract class StringDataMatcher extends DataMatcher implements StringDataMatcherInterface
 {
     const MATCHER_ID_CASE_SENSITIVE = 'matcher_string_case_sensitive';
