@@ -4,7 +4,7 @@ namespace FOD\Instruct\DataMatcher;
 
 use FOD\Instruct\DataMatcher\Argument\DataMatcherArgument;
 
-final class StringLevenshteinDataMatcher extends StringDataMatcher
+final class StringLevenshteinDataMatcher extends AbstractStringDataMatcher
 {
     /**
      * @var int

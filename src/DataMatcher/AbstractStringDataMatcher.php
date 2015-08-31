@@ -5,7 +5,7 @@ namespace FOD\Instruct\DataMatcher;
 use FOD\Instruct\DataProcessor\LowercaseDataProcessor;
 use FOD\Instruct\DataProcessor\TrimDataProcessor;
 
-abstract class StringDataMatcher extends AbstractDataMatcher implements StringDataMatcherInterface
+abstract class AbstractStringDataMatcher extends AbstractDataMatcher implements StringDataMatcherInterface
 {
     const MATCHER_ID_CASE_SENSITIVE = 'matcher_string_case_sensitive';
     const MATCHER_ID_TRIM = 'matcher_string_trim';

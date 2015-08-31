@@ -4,7 +4,7 @@ namespace FOD\Instruct\DataMatcher;
 
 use FOD\Instruct\DataMatcher\Argument\DataMatcherArgument;
 
-final class StringRegexpDataMatcher extends StringDataMatcher
+final class StringRegexpDataMatcher extends AbstractStringDataMatcher
 {
     /**
      * @var int
