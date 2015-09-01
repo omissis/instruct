@@ -3,22 +3,12 @@
 namespace FOD\Instruct\Event;
 
 use FOD\Instruct\Collection\TypeCollection;
+use FOD\Instruct\Comparator\IsEqualToComparator;
 
 class EventNameCollection extends TypeCollection
 {
     public function __construct(array $input = [])
     {
-        parent::__construct($input, 'FOD\Instruct\Event\EventName');
-    }
-
-    public function contains(EventName $eventName)
-    {
-        foreach ($this as $innerEventName) {
-            if ($innerEventName->isEqualTo($eventName)) {
-                return true;
-            }
-        }
-
-        return false;
+        parent::__construct($input, 'FOD\Instruct\Event\EventName', new IsEqualToComparator());
     }
 }

@@ -4,12 +4,13 @@ namespace FOD\Instruct\Action;
 
 use FOD\Instruct\Context\ContextInterface;
 use FOD\Instruct\Collection\TypeCollection;
+use FOD\Instruct\Comparator\IsEqualToComparator;
 
 class ActionCollection extends TypeCollection implements ActionInterface
 {
     public function __construct(array $input = [])
     {
-        parent::__construct($input, 'FOD\Instruct\Action\ActionInterface');
+        parent::__construct($input, 'FOD\Instruct\Action\ActionInterface', new IsEqualToComparator());
     }
 
     /**
@@ -20,20 +21,6 @@ class ActionCollection extends TypeCollection implements ActionInterface
         foreach ($this as $innerAction) {
             $innerAction->execute($context);
         }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function contains(ActionInterface $action)
-    {
-        foreach ($this as $innerAction) {
-            if ($innerAction->isEqualTo($action)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
