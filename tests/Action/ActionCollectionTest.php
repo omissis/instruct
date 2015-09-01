@@ -42,7 +42,18 @@ class ActionCollectionTest extends TestCase
         $this->assertFalse($actions->contains($action2->reveal()));
     }
 
-    public function testComparesToActions()
+    public function testComparesToAction()
+    {
+        $action = $this->prophesize('FOD\Instruct\Action\ActionInterface');
+
+        $action->isEqualTo($action->reveal())->willReturn(true);
+
+        $actions = new ActionCollection([$action->reveal()]);
+
+        $this->assertTrue($actions->isEqualTo($action->reveal()));
+    }
+
+    public function testComparesToActionCollection()
     {
         $action1 = $this->prophesize('FOD\Instruct\Action\ActionInterface');
         $action2 = $this->prophesize('FOD\Instruct\Action\ActionInterface');
@@ -65,9 +76,9 @@ class ActionCollectionTest extends TestCase
         $actions3 = new ActionCollection([$action1->reveal()]);
         $actions4 = new ActionCollection([$action1->reveal(), $action3->reveal()]);
 
-        $this->assertTrue($actions1->isEqualTo($actions2));
-        $this->assertFalse($actions1->isEqualTo($actions3));
-        $this->assertFalse($actions1->isEqualTo($actions4));
+        $this->assertTrue($actions1->isEqualToCollection($actions2));
+        $this->assertFalse($actions1->isEqualToCollection($actions3));
+        $this->assertFalse($actions1->isEqualToCollection($actions4));
     }
 
     public function testExecutesAllActions()
