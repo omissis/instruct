@@ -13,6 +13,11 @@ use FOD\Instruct\Comparator\ComparatorInterface;
  */
 class TypeCollection extends ArrayObject
 {
+    /**
+     * @var ComparatorInterface
+     */
+    private $itemsComparator;
+
     public function __construct(array $input = [], $type = 'string', ComparatorInterface $itemsComparator = null)
     {
         foreach ($input as $index => $value) {
