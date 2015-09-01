@@ -30,7 +30,7 @@ class IsEqualToComparatorTest extends TestCase
 
     /**
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Second Item is expected to implement isEqualTo() method.
+     * @expectedExceptionMessage The second item is expected to implement isEqualTo() method.
      */
     public function testComparisonOnNonEquatableObjects()
     {
@@ -42,7 +42,7 @@ class IsEqualToComparatorTest extends TestCase
 
     /**
      * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Second Item is expected to be an object and to implement isEqualTo() method.
+     * @expectedExceptionMessage The second item is expected to be an object and to implement isEqualTo() method.
      */
     public function testComparisonOnScalars()
     {
